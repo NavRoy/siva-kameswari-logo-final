@@ -269,15 +269,15 @@ export default function GrandLaunch() {
     const onMove = (e: MouseEvent) => {
       const nx = (e.clientX / window.innerWidth - 0.5) * 2;
       const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-      if (logoRef.current) {
-gsap.to(logoRef.current, {
-  x: 0,
-  y: 0,
-  rotateY: 0,
-  rotateX: 0,
-  duration: 0.9,
-});
-      }
+      if (logoRef.current && window.innerWidth > 768) {
+  gsap.to(logoRef.current, {
+    x: nx * 12,
+    y: ny * 8,
+    rotateY: nx * 8,
+    rotateX: -ny * 5,
+    duration: 0.9,
+  });
+}
       if (haloRef.current) {
         gsap.to(haloRef.current, { x: nx * -22, y: ny * -16, duration: 1.2, ease: "power2.out" });
       }
@@ -404,44 +404,41 @@ gsap.to(logoRef.current, {
       />
 
       {/* logo */}
-<div
-  ref={logoRef}
-  className="
-pointer-events-none
-absolute
-left-1/2
-top-1/2
-z-20
-w-[75vw]
-h-[75vw]
-max-w-[500px]
-max-h-[500px]
-sm:w-[60vw]
-sm:h-[60vw]
-md:w-[48vmin]
-md:h-[48vmin]
--transform
--translate-x-1/2
--translate-y-1/2
-opacity-0
-"
-  style={{ perspective: "1200px" }}
->
-        <div className="relative h-full w-full">
-         <img
-  src={logoAsset}
-  alt="Siva Kameswari Steels"
-  width={1024}
-  height={1024}
-  className="h-full w-full object-contain drop-shadow-[0_0_60px_rgba(255,190,80,0.45)]"
-  draggable={false}
-/>
-          {/* shine sweep mask */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div ref={shineRef} className="shine-sweep absolute -inset-y-10 left-0 w-1/3" />
-          </div>
-        </div>
-      </div>
+{/* Logo Wrapper */}
+<div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+
+  <div
+    ref={logoRef}
+    className="
+      relative
+      w-[68vw]
+      h-[68vw]
+      max-w-[420px]
+      max-h-[420px]
+      sm:w-[60vw]
+      sm:h-[60vw]
+      md:w-[48vmin]
+      md:h-[48vmin]
+      opacity-0
+    "
+    style={{ perspective: "1200px" }}
+  >
+    <img
+      src={logoAsset}
+      alt="Siva Kameswari Steels"
+      className="w-full h-full object-contain drop-shadow-[0_0_60px_rgba(255,190,80,0.45)]"
+      draggable={false}
+    />
+
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        ref={shineRef}
+        className="shine-sweep absolute -inset-y-10 left-0 w-1/3"
+      />
+    </div>
+  </div>
+
+</div>
 
       {/* enter button */}
 {phase === "idle" && (
@@ -485,8 +482,8 @@ opacity-0
 
       {/* foreground caption after reveal */}
 {phase === "revealed" && (
-  <div className="pointer-events-none absolute bottom-14 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full flex justify-center">
-    <div className="text-center animate-fade-in">
+  <div className="pointer-events-none absolute bottom-14 sm:bottom-10 left-0 right-0 z-20 flex justify-center">
+    <div className="text-center animate-fade-in w-full px-4">
 
       <div className="mb-2 flex items-center justify-center gap-3">
         <span className="h-px w-10 sm:w-16 bg-gradient-to-r from-transparent via-[#d9b15f] to-[#d9b15f]" />
