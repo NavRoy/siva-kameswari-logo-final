@@ -406,16 +406,34 @@ gsap.to(logoRef.current, {
       {/* logo */}
 <div
   ref={logoRef}
-  className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-[48vmin] w-[48vmin] -translate-x-1/2 -translate-y-1/2 opacity-0"
+  className="
+pointer-events-none
+absolute
+left-1/2
+top-1/2
+z-20
+w-[75vw]
+h-[75vw]
+max-w-[500px]
+max-h-[500px]
+sm:w-[60vw]
+sm:h-[60vw]
+md:w-[48vmin]
+md:h-[48vmin]
+-transform
+-translate-x-1/2
+-translate-y-1/2
+opacity-0
+"
   style={{ perspective: "1200px" }}
 >
         <div className="relative h-full w-full">
-          <img
+         <img
   src={logoAsset}
   alt="Siva Kameswari Steels"
   width={1024}
   height={1024}
-  className="h-full w-full object-contain -translate-y-8 drop-shadow-[0_0_60px_rgba(255,190,80,0.45)]"
+  className="h-full w-full object-contain drop-shadow-[0_0_60px_rgba(255,190,80,0.45)]"
   draggable={false}
 />
           {/* shine sweep mask */}
@@ -445,22 +463,74 @@ gsap.to(logoRef.current, {
         <span className="glass-shine pointer-events-none absolute inset-0 rounded-full" />
       </button>
 
-      <p className="max-w-[320px] text-[0.55rem] sm:text-[0.65rem] text-center tracking-[0.2em] sm:tracking-[0.4em] uppercase text-white/30">
-        A Legacy Of Strength · Forged In Trust
-      </p>
+     <p
+  className="
+  text-center
+  uppercase
+  text-gold/70
+  text-[0.55rem]
+  sm:text-[0.7rem]
+  tracking-[0.2em]
+  sm:tracking-[0.55em]
+  px-4
+  max-w-full
+  "
+>
+  A LEGACY OF STRENGTH · FORGED IN TRUST
+</p>
 
     </div>
   </div>
 )}
 
       {/* foreground caption after reveal */}
-      {phase === "revealed" && (
-        <div className="pointer-events-none absolute bottom-10 left-0 right-0 z-20 flex justify-center">
-          <p className="animate-fade-in text-[0.7rem] tracking-[0.55em] uppercase text-gold/70">
-            Grand Launch · Forging the Future of Steel
-          </p>
-        </div>
-      )}
+{phase === "revealed" && (
+  <div className="pointer-events-none absolute bottom-14 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 w-full flex justify-center">
+    <div className="text-center animate-fade-in">
+
+      <div className="mb-2 flex items-center justify-center gap-3">
+        <span className="h-px w-10 sm:w-16 bg-gradient-to-r from-transparent via-[#d9b15f] to-[#d9b15f]" />
+        <span className="text-[#d9b15f] text-sm sm:text-lg">✦</span>
+        <span className="h-px w-10 sm:w-16 bg-gradient-to-l from-transparent via-[#d9b15f] to-[#d9b15f]" />
+      </div>
+
+      <h3
+        className="
+        text-[#d9b15f]
+        uppercase
+        text-[0.75rem]
+        sm:text-[1rem]
+        tracking-[0.35em]
+        sm:tracking-[0.55em]
+        font-light
+        "
+      >
+        GRAND LAUNCH
+      </h3>
+
+      <p
+        className="
+        mt-2
+        text-[#d9b15f]/80
+        uppercase
+        text-[0.45rem]
+        sm:text-[0.65rem]
+        tracking-[0.18em]
+        sm:tracking-[0.35em]
+        "
+      >
+        FORGING THE FUTURE OF STEEL
+      </p>
+
+      <div className="mt-2 flex items-center justify-center gap-3">
+        <span className="h-px w-10 sm:w-16 bg-gradient-to-r from-transparent via-[#d9b15f] to-[#d9b15f]" />
+        <span className="text-[#d9b15f] text-sm sm:text-lg">✦</span>
+        <span className="h-px w-10 sm:w-16 bg-gradient-to-l from-transparent via-[#d9b15f] to-[#d9b15f]" />
+      </div>
+
+    </div>
+  </div>
+)}
     </div>
   );
 }

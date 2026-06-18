@@ -314,3 +314,23 @@
 
 .text-gold { color: var(--gold-300); }
 
+@media (max-width: 768px) {
+  .beam {
+    width: 28vw !important;
+  }
+
+  .halo {
+    width: 90vw !important;
+    height: 90vw !important;
+  }
+
+  .lens-flare {
+    width: 120vw !important;
+    height: 120vw !important;
+  }
+
+  img {
+    object-position: center center;
+  }
+}
+
